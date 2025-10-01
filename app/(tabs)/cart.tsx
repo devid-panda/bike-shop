@@ -32,9 +32,9 @@ export default function CartScreen() {
 
   return (
     <SafeAreaView className="flex-1 bg-dark-900">
+      {/* Header */}
+      <PageHeader title="My Shopping Cart" />
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <PageHeader title="My Shopping Cart" />
         {/* Cart Items */}
         <View>
           {cartItems.map((item, index) => <CartItem key={item.bike.id} item={item} index={index} />)}
