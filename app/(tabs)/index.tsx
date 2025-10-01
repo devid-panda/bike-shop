@@ -1,98 +1,128 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
-
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import BackgroundSvg from '@/components/background-svg';
+import { BikeCard } from '@/components/bike-card';
+import { BikePreview } from '@/components/bike-preview';
+import Button from '@/components/ui/button';
+import CategoryButton from '@/components/ui/category-button';
+import { IconSymbol } from '@/components/ui/icon-symbol';
+import { bikes } from '@/data/bikes';
+import { IconBicycle, IconHelmet, IconMountain2, IconRoad } from '@/data/images';
+import { useResponsive } from '@/hooks/use-responsive';
+import React, { useState } from 'react';
+import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import Animated, { FadeInUp } from 'react-native-reanimated';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const [searchQuery, setSearchQuery] = useState('');
+  const [selectedCategory, setSelectedCategory] = useState('All');
+  const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const { isTablet } = useResponsive();
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  const categories = ['All', 'Bike', 'Road', 'Mountain', 'Helmet'];
+  
+  const filteredBikes = bikes.filter(bike => {
+    const matchesSearch = bike.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         bike.brand.toLowerCase().includes(searchQuery.toLowerCase());
+    const matchesCategory = selectedCategory === 'All' || 
+                           bike.category.toLowerCase() === selectedCategory.toLowerCase();
+    return matchesSearch && matchesCategory;
+  });
+
+  const featuredBike = bikes[0]; // PEUGEOT - LR01
+
+  return (
+    <SafeAreaView className="flex-1 bg-dark-900">
+      <BackgroundSvg className="top-[105px]" />
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
+        {/* Header */}
+        <Animated.View 
+          entering={FadeInUp.delay(100)}
+          className="px-5 py-4"
+        >
+          <View className="flex-row items-center justify-between">
+            <Text className="text-white text-xl font-bold font-poppins">Choose Your Bike</Text>
+            <Button className="w-11 !px-0" onPress={() => setIsSearchVisible(!isSearchVisible)}>
+              <IconSymbol name="magnifyingglass" size={20} color="white" />
+            </Button>
+          </View>
+
+          {/* Search Bar */}
+          {isSearchVisible && (
+            <View className="bg-dark-800 rounded-2xl px-4 py-3 flex-row items-center mt-6">
+              <IconSymbol name="magnifyingglass" size={20} color="#64748B" />
+              <TextInput
+                className="flex-1 ml-3 text-white text-base"
+                placeholder="Search bikes..."
+                placeholderTextColor="#64748B"
+                value={searchQuery}
+                onChangeText={setSearchQuery}
+              />
+            </View>
+          )}
+        </Animated.View>
+
+        {/* Featured Bike Card */}
+        <View className="pt-[30px] px-4 pb-4 ">
+          <BikePreview bike={featuredBike} />
+        </View>
+
+        <Animated.View
+          entering={FadeInUp.delay(100)}
+          className="px-6 pt-2 pb-6"
+        >
+          {/* Categories */}
+          <View className="flex justify-between align-center flex-row w-full -skew-y-6">
+            {categories.map((category) => (
+              <CategoryButton
+                key={category}
+                className="skew-y-6"
+                onPress={() => setSelectedCategory(category)}
+                active={selectedCategory === category}
+              >
+                {category === 'All' && (
+                  <Text className={`text-sm font-medium ${
+                    selectedCategory === category ? 'text-white' : 'text-[#ffffff99]'
+                  }`}>
+                    {category}
+                  </Text>
+                )}
+                {category === 'Bike' && (
+                  <IconBicycle color={selectedCategory === category ? 'white' : '#ffffff99'} />
+                )}
+                {category === 'Road' && (
+                  <IconRoad name='road.circle' size={36} color={selectedCategory === category ? 'white' : '#ffffff99'} />
+                )}
+                {category === 'Mountain' && (
+                  <IconMountain2 name='mountain.2' size={36} color={selectedCategory === category ? 'white' : '#ffffff99'} />
+                )}
+                {category === 'Helmet' && (
+                  <IconHelmet name='helmet.fill' size={36} color={selectedCategory === category ? 'white' : '#ffffff99'} />
+                )}
+              </CategoryButton>
+            ))}
+          </View>
+        </Animated.View>
+
+        {/* Bikes Grid */}
+        <View className="px-6 pb-6 pt-4 mb-12 -skew-y-6">
+          <View className={`flex-row flex-wrap ${isTablet ? 'justify-start' : 'justify-between'}`}>
+            {filteredBikes.map((bike, index) => (
+              <View 
+                key={bike.id}
+                className={isTablet ? 'w-1/3 pr-3' : 'w-[48%]'}
+              >
+                <BikeCard bike={bike} index={index} isDark={index === 0} />
+              </View>
+            ))}
+          </View>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
-  },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
-  },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  headerContainer: {
+    padding: 8,
   },
 });
