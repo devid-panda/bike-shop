@@ -27,7 +27,7 @@ export default function ProductDetailScreen() {
   }
 
   return (
-    <SafeAreaView className="flex-1 bg-dark-900 relative">
+    <SafeAreaView className="flex-1 bg-dark-900 relative" edges={['top']}> 
       <BackgroundSvg className="top-[-105px]" />
       {/* Header */}
       <PageHeader title={bike.name} />
