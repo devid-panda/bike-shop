@@ -1,6 +1,6 @@
 import BackgroundSvg from '@/components/background-svg';
-import { BikeCard } from '@/components/bike-card';
-import { BikePreview } from '@/components/bike-preview';
+import { BikeCard } from '@/components/bike/bike-card';
+import { BikePreview } from '@/components/bike/bike-preview';
 import Button from '@/components/ui/button';
 import CategoryButton from '@/components/ui/category-button';
 import { IconSymbol } from '@/components/ui/icon-symbol';

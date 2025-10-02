@@ -7,7 +7,7 @@ import { Link } from 'expo-router';
 import React, { useState } from 'react';
 import { Dimensions, Text, TouchableOpacity, View } from 'react-native';
 import Animated, { FadeInDown } from 'react-native-reanimated';
-import { IconSymbol } from './ui/icon-symbol';
+import { IconSymbol } from '../ui/icon-symbol';
 
 const { width } = Dimensions.get('window');
 
@@ -70,7 +70,7 @@ export function BikeCard({ bike, index, isLarge = false, isDark = false }: BikeC
             <TouchableOpacity className="absolute right-0 top-0 w-6 h-6 items-center justify-center" onPress={() => setIsFavorite(!isFavorite)}>
               {isFavorite ? (
                 <Image
-                  source={require('../assets/images/icon-heart.png')}
+                  source={require('../../assets/images/icon-heart.png')}
                   style={{ width: 20, height: 20 }}
                   resizeMode="contain"
                 />

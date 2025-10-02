@@ -12,8 +12,8 @@ import Animated, {
   useSharedValue,
   withSpring
 } from 'react-native-reanimated';
+import Button from '../ui/button';
 import CategoryButton from './category-button';
-import Button from './ui/button';
 
 const { width } = Dimensions.get('window');
 

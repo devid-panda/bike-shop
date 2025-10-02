@@ -1,5 +1,5 @@
 import BackgroundSvg from '@/components/background-svg';
-import BikeDetails from '@/components/bike-details';
+import BikeDetails from '@/components/bike/bike-details';
 import PageHeader from '@/components/page-header';
 import { BikeCarousel } from '@/components/ui/bike-carousel';
 import { bikes } from '@/data/bikes';
