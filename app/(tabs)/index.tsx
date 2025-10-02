@@ -42,7 +42,7 @@ export default function HomeScreen() {
           <View className="flex-row items-center justify-between">
             <Text className="text-white text-xl font-bold font-poppins-bold">Choose Your Bike</Text>
             <Button className="w-11 !px-0" onPress={() => setIsSearchVisible(!isSearchVisible)}>
-              <IconSymbol name="magnifyingglass" size={20} color="white" />
+              <IconSymbol name="magnifyingglass" size={24} color="white" />
             </Button>
           </View>
 

@@ -86,6 +86,7 @@ module.exports = {
         'inset-md': '4px 4px 10px 0px #252B39, -4px -4px 10px 0px #38445A',
         'inset-lg': '0px 20px 60px 0px #10141C99, 0px -20px 60px 0px #3B475F80',
         'inset-xl': '0px 20px 60px 0px #10141C, 0px -20px 40px 0px #2B344580',
+        'inset-2xl': '0px 20px 30px 0px #10141C, 0px -20px 30px 0px #2B344580',
       },
     },
   },

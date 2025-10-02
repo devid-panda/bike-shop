@@ -56,7 +56,7 @@ export function Button({
     return (
       <TouchableOpacity
         className={cn(
-          'rounded-lg items-center justify-center overflow-hidden shadow-custom cursor-pointer',
+          'rounded-lg items-center justify-center overflow-hidden shadow-inset-2xl cursor-pointer',
           sizes[size],
           className,
           'px-0',

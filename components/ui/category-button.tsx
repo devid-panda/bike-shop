@@ -15,7 +15,7 @@ export function CategoryButton({
   active = false,
   ...props
 }: CategoryButtonProps) {
-  const baseStyles = 'w-[50px] h-[50px] rounded-[10px] flex items-center justify-center border-0 overflow-hidden shadow-custom';
+  const baseStyles = 'w-[50px] h-[50px] rounded-[10px] flex items-center justify-center border-0 overflow-hidden shadow-inset-2xl';
 
   return (
     <TouchableOpacity
