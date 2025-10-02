@@ -3,12 +3,12 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
-    interpolate,
-    runOnJS,
-    useAnimatedStyle,
-    useSharedValue,
-    withSpring,
-    withTiming
+  interpolate,
+  runOnJS,
+  useAnimatedStyle,
+  useSharedValue,
+  withSpring,
+  withTiming
 } from 'react-native-reanimated';
 import Button from '../ui/button';
 
@@ -93,7 +93,7 @@ export default function CheckoutButton() {
         className="w-[174px] h-[44px] bg-[#242C3B] rounded-[10px] overflow-hidden relative"
       >
         {/* Dark gray text area */}
-        <View className="px-6 justify-center flex-row items-center flex-1 relative">
+        <View className="px-6 justify-center flex-row items-center flex-1 relative shadow-custom-3">
           {/* Checkout text */}
           <Animated.View 
             style={[checkoutTextAnimatedStyle]}

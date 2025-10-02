@@ -88,7 +88,7 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
   }, [activeTab]);
 
   return (
-    <View className="flex-1 mt-8 rounded-[30px] relative">
+    <View className="flex-1 mt-8 rounded-[30px] relative shadow-custom-2">
       <View className="absolute inset-0 rounded-[30px] -ml-1 -mr-1">
         <LinearGradient
           colors={['rgba(255, 255, 255, 0.2)', 'rgba(0, 0, 0, 0)']}
