@@ -51,12 +51,7 @@ A modern, responsive React Native mobile app for a bike shop built with Expo, Ty
    npm install
    ```
 
-3. **Start the development server**
-   ```bash
-   npm start
-   ```
-
-4. **Run on device/simulator**
+3. **Run on device/simulator**
    ```bash
    # iOS
    npm run ios
