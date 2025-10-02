@@ -18,6 +18,7 @@ export function BikePreview({ bike }: BikePreviewProps) {
       className="relative"
     >
       <View className="relative z-10 shadow-inset-lg h-[240px]">
+        {/* Background Gradient */}
         <View className="absolute inset-0 w-full">
           <Image
             source={require('../../assets/images/bike-preview.png')}
@@ -28,6 +29,7 @@ export function BikePreview({ bike }: BikePreviewProps) {
             contentFit="cover"
           />
         </View>
+        {/* Bike Image */}
         <View className="absolute inset-0 w-full h-full items-center justify-center">
           <Image
             source={bike.images[0]}

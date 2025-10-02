@@ -8,7 +8,7 @@ import { bikes } from '@/data/bikes';
 import { IconBicycle, IconHelmet, IconMountain2, IconRoad } from '@/data/images';
 import { useResponsive } from '@/hooks/use-responsive';
 import React, { useState } from 'react';
-import { ScrollView, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ScrollView, Text, TextInput, View } from 'react-native';
 import Animated, { FadeInUp } from 'react-native-reanimated';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
@@ -119,9 +119,3 @@ export default function HomeScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  headerContainer: {
-    padding: 8,
-  },
-});

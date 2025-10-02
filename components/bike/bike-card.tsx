@@ -30,6 +30,7 @@ export function BikeCard({ bike, index, isLarge = false, isDark = false }: BikeC
     >
       <Link href={`/product/${bike.id}`} asChild>
         <TouchableOpacity className="rounded-[20px] px-4 pb-8 pt-2 relative">
+          {/* Background Gradient */}
           {isFavorite ? (
             <TouchableOpacity className="absolute inset-0 rounded-[20px] shadow-inset-xl">
               <LinearGradient

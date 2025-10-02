@@ -1,7 +1,7 @@
 import BackgroundSvg from '@/components/background-svg';
+import { BikeCarousel } from '@/components/bike/bike-carousel';
 import BikeDetails from '@/components/bike/bike-details';
 import PageHeader from '@/components/page-header';
-import { BikeCarousel } from '@/components/ui/bike-carousel';
 import { bikes } from '@/data/bikes';
 import { Bike } from '@/types/bike';
 import { useLocalSearchParams } from 'expo-router';
@@ -29,12 +29,8 @@ export default function ProductDetailScreen() {
   return (
     <SafeAreaView className="flex-1 bg-dark-900 relative" edges={['top']}> 
       <BackgroundSvg className="top-[-105px]" />
-      {/* Header */}
       <PageHeader title={bike.name} />
-
-      {/* Bike Image */}
       <BikeCarousel images={bike.images} />
-
       <BikeDetails bike={bike} />
     </SafeAreaView>
   );
