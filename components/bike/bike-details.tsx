@@ -4,18 +4,17 @@ import { useCart } from '@/context/cart-context';
 import { Bike } from '@/types/bike';
 import { LinearGradient } from 'expo-linear-gradient';
 import React, { useEffect, useState } from 'react';
-import { Alert, Dimensions, ScrollView, Text, View } from 'react-native';
+import { Alert, ScrollView, Text, View } from 'react-native';
 import Animated, {
   FadeInDown,
-  interpolateColor,
+  interpolate,
   useAnimatedStyle,
   useSharedValue,
-  withSpring
+  withSpring,
+  withTiming
 } from 'react-native-reanimated';
 import Button from '../ui/button';
 import CategoryButton from './category-button';
-
-const { width } = Dimensions.get('window');
 
 interface BikeDetailsProps {
   bike: Bike;
@@ -27,27 +26,39 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
   // Animation values
   const tabIndicatorPosition = useSharedValue(0);
   const addToCartScale = useSharedValue(1);
+  const slidePosition = useSharedValue(0);
   const { addToCart, items } = useCart();
   
   // Check if bike is already in cart
   const isInCart = items.some(item => item.bike.id === bike.id);
-
-  const tabIndicatorStyle = useAnimatedStyle(() => {
-    return {
-      transform: [{ translateX: tabIndicatorPosition.value * (width / 2 - 32) }],
-      backgroundColor: interpolateColor(
-        tabIndicatorPosition.value,
-        [0, 1],
-        ['#0091F5', '#0091F5']
-      ),
-    };
-  });
 
   const addToCartAnimatedStyle = useAnimatedStyle(() => {
     return {
       transform: [{ scale: addToCartScale.value }],
     };
   });
+
+  const handleTabChange = (tab: 'description' | 'specification') => {
+    if (tab === activeTab) return;
+    
+    // Determine slide direction
+    const isMovingRight = (activeTab === 'description' && tab === 'specification');
+    const isMovingLeft = (activeTab === 'specification' && tab === 'description');
+    
+    if (isMovingRight) {
+      // Slide left (content moves left, revealing right content)
+      slidePosition.value = withTiming(-1, { duration: 300 });
+    } else if (isMovingLeft) {
+      // Slide right (content moves right, revealing left content)
+      slidePosition.value = withTiming(1, { duration: 300 });
+    }
+    
+    // Update tab after a brief delay for smooth transition
+    setTimeout(() => {
+      setActiveTab(tab);
+      slidePosition.value = withTiming(0, { duration: 300 });
+    }, 150);
+  };
 
   const handleAddToCart = () => {
     if (!bike || isInCart) return;
@@ -59,6 +70,18 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
     addToCart(bike);
     Alert.alert('Added to Cart', `${bike.name} has been added to your cart!`);
   };
+
+  const contentAnimatedStyle = useAnimatedStyle(() => {
+    const translateX = interpolate(
+      slidePosition.value,
+      [-1, 0, 1],
+      [-300, 0, 300]
+    );
+    
+    return {
+      transform: [{ translateX }],
+    };
+  });
 
   useEffect(() => {
     tabIndicatorPosition.value = withSpring(activeTab === 'description' ? 0 : 1);
@@ -85,25 +108,21 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
       {/* Tabs */}
       <Animated.View className="px-10 pb-1 pt-8">
         <View className="flex-row justify-center items-center relative gap-[30px]">
-          {/* <Animated.View 
-            style={[tabIndicatorStyle]}
-            className="absolute top-1 left-1 w-1/2 h-12 bg-primary-500 rounded-xl"
-          /> */}
           <CategoryButton
             active={activeTab === 'description'}
             title="Description"
-            onPress={() => setActiveTab('description')}
+            onPress={() => handleTabChange('description')}
           />
           <CategoryButton
             active={activeTab === 'specification'}
             title="Specification"
-            onPress={() => setActiveTab('specification')}
+            onPress={() => handleTabChange('specification')}
           />
         </View>
       </Animated.View>
       <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Tab Content */}
-        <View className="px-5 pb-6 pt-6">
+        <Animated.View style={[contentAnimatedStyle]} className="px-5 pb-6 pt-6">
           {activeTab === 'description' ? (
             <Animated.View entering={FadeInDown.delay(100)}>
               <Text className="text-white text-[17px] font-bold font-poppins-bold leading-[100%] tracking-[-0.3px] mb-2">
@@ -143,7 +162,7 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
               </View>
             </Animated.View>
           )}
-        </View>
+        </Animated.View>
       </ScrollView>
 
       {/* Add to Cart Button */}

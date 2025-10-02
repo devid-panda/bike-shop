@@ -82,6 +82,8 @@ module.exports = {
       },
       boxShadow: {
         'custom': '0px 30px 60px 0px #1A1F2C',
+        'inset-sm': '4px 4px 8px 0px #202633 inset, -4px -4px 8px 0px #364055 inset',
+        'inset-md': '4px 4px 10px 0px #252B39, -4px -4px 10px 0px #38445A',
       },
     },
   },
