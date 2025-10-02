@@ -30,22 +30,47 @@ export function BikeCard({ bike, index, isLarge = false, isDark = false }: BikeC
     >
       <Link href={`/product/${bike.id}`} asChild>
         <TouchableOpacity className="rounded-[20px] px-4 pb-8 pt-2 relative">
-          <View className="absolute inset-0 rounded-[20px] opacity-50">
-            <LinearGradient
-              colors={['rgba(255, 255, 255, 0.2)', 'rgba(0, 0, 0, 0.2)']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 10 }}
-              className="absolute inset-0 rounded-[20px]"
-            />
-            <LinearGradient
-              colors={isDark ? ['rgba(54, 62, 81, 0.6)', 'rgba(25, 30, 38, 0.6)'] : ['#353F5499', '#22283499']}
-              start={{ x: 0, y: 0 }}
-              end={{ x: 1, y: 1 }}
-              style={{ position: 'absolute', top: 2, left: 2, right: 2, bottom: 2, borderRadius: 8 }}
-              className="absolute inset-[2px] rounded-[20px]"
-            />
-          </View>
+          {isFavorite ? (
+            <TouchableOpacity className="absolute inset-0 rounded-[20px] shadow-inset-xl">
+              <LinearGradient
+                colors={[
+                  'rgba(255, 255, 255, 0.2)', // 7.51%
+                  'rgba(0, 0, 0, 0.2)',       // 56.43%
+                  'rgba(0, 0, 0, 0.2)'        // 65.43%
+                ]}
+                locations={[0.0751, 0.5643, 0.6543]}
+                start={{ x: 0.07, y: 0 }} // approximate for 134.4deg
+                end={{ x: 0.93, y: 1 }}
+                style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 20 }}
+                className="absolute inset-0 rounded-[20px]"
+              />
+              <LinearGradient
+                colors={['#353F54', '#222834']}
+                locations={[0.2798, 0.812]}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{ position: 'absolute', top: 2, left: 2, right: 2, bottom: 2, borderRadius: 20 }}
+                className="absolute inset-[2px] rounded-[20px]"
+              />
+            </TouchableOpacity>
+          ) : (
+            <View className="absolute inset-0 rounded-[20px] opacity-50">
+              <LinearGradient
+                colors={['rgba(255, 255, 255, 0.2)', 'rgba(0, 0, 0, 0.2)']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, borderRadius: 20 }}
+                className="absolute inset-0 rounded-[20px]"
+              />
+              <LinearGradient
+                colors={isDark ? ['rgba(54, 62, 81, 0.6)', 'rgba(25, 30, 38, 0.6)'] : ['#353F5499', '#22283499']}
+                start={{ x: 0, y: 0 }}
+                end={{ x: 1, y: 1 }}
+                style={{ position: 'absolute', top: 2, left: 2, right: 2, bottom: 2, borderRadius: 20 }}
+                className="absolute inset-[2px] rounded-[20px]"
+              />
+            </View>
+          )}
           <View className="skew-y-6">
             <View className={`aspect-[6/5] w-full rounded-xl`}>
               <Image
@@ -60,11 +85,11 @@ export function BikeCard({ bike, index, isLarge = false, isDark = false }: BikeC
                 contentFit="cover"
               />
             </View>
-            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins-medium tracking-[-0.3px] mt-8 mb-1">{bike.brand}</Text>
+            <Text className="text-[#ffffff99] text-[13px] font-medium leading-[100%] font-poppins-medium tracking-[-0.3px] mt-8 mb-1">{bike.brand}</Text>
             <Text className="text-white font-poppins-bold text-[15px] leading-[100%] tracking-[-0.3px] mb-1" numberOfLines={1}>
               {bike.name}
             </Text>
-            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins-medium leading-[100%]">
+            <Text className="text-[#ffffff99] text-[13px] font-medium leading-[100%] font-poppins-medium leading-[100%]">
               $ {bike.price.toLocaleString()}
             </Text>
             <TouchableOpacity className="absolute right-0 top-0 w-6 h-6 items-center justify-center" onPress={() => setIsFavorite(!isFavorite)}>

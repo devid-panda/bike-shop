@@ -84,6 +84,8 @@ module.exports = {
         'custom': '0px 30px 60px 0px #1A1F2C',
         'inset-sm': '4px 4px 8px 0px #202633 inset, -4px -4px 8px 0px #364055 inset',
         'inset-md': '4px 4px 10px 0px #252B39, -4px -4px 10px 0px #38445A',
+        'inset-lg': '0px 20px 60px 0px #10141C99, 0px -20px 60px 0px #3B475F80',
+        'inset-xl': '0px 20px 60px 0px #10141C, 0px -20px 40px 0px #2B344580',
       },
     },
   },

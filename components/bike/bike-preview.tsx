@@ -18,7 +18,7 @@ export function BikePreview({ bike }: BikePreviewProps) {
       entering={FadeInDown.delay(200)}
       className="relative"
     >
-      <View className="relative z-10">
+      <View className="relative z-10 shadow-inset-lg">
         <Svg
           height="240"
           width={width - 40}
@@ -30,20 +30,19 @@ export function BikePreview({ bike }: BikePreviewProps) {
               id="bikePreviewGradient"
               x1="0"
               y1="0"
-              x2={width - 40}
-              y2="240"
+              x2={Math.cos((169.98 * Math.PI) / 180) * (width - 40)}
+              y2={Math.sin((169.98 * Math.PI) / 180) * 240}
               gradientUnits="userSpaceOnUse"
-              gradientTransform="rotate(169.98)"
             >
               <Stop
                 offset="27.98%"
                 stopColor="#353F54"
-                stopOpacity="0.6"
+                stopOpacity={0.6}
               />
               <Stop
                 offset="81.2%"
                 stopColor="#222834"
-                stopOpacity="0.6"
+                stopOpacity={0.6}
               />
             </LinearGradient>
             {/* Border Gradient */}
