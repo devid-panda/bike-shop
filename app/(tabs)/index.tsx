@@ -33,34 +33,33 @@ export default function HomeScreen() {
   return (
     <SafeAreaView className="flex-1 bg-dark-900">
       <BackgroundSvg className="top-[105px]" />
-      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
-        {/* Header */}
-        <Animated.View 
-          entering={FadeInUp.delay(100)}
-          className="px-5 py-4"
-        >
-          <View className="flex-row items-center justify-between">
-            <Text className="text-white text-xl font-bold font-poppins-bold">Choose Your Bike</Text>
-            <Button className="w-11 !px-0" onPress={() => setIsSearchVisible(!isSearchVisible)}>
-              <IconSymbol name="magnifyingglass" size={24} color="white" />
-            </Button>
+      {/* Header */}
+      <Animated.View 
+        entering={FadeInUp.delay(100)}
+        className="px-5 py-4"
+      >
+        <View className="flex-row items-center justify-between">
+          <Text className="text-white text-xl font-bold font-poppins-bold">Choose Your Bike</Text>
+          <Button className="w-11 !px-0" onPress={() => setIsSearchVisible(!isSearchVisible)}>
+            <IconSymbol name="magnifyingglass" size={24} color="white" />
+          </Button>
+        </View>
+
+        {/* Search Bar */}
+        {isSearchVisible && (
+          <View className="bg-dark-800 rounded-2xl px-4 py-3 flex-row items-center mt-6">
+            <IconSymbol name="magnifyingglass" size={20} color="#64748B" />
+            <TextInput
+              className="flex-1 ml-3 text-white text-base font-poppins"
+              placeholder="Search bikes..."
+              placeholderTextColor="#64748B"
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+            />
           </View>
-
-          {/* Search Bar */}
-          {isSearchVisible && (
-            <View className="bg-dark-800 rounded-2xl px-4 py-3 flex-row items-center mt-6">
-              <IconSymbol name="magnifyingglass" size={20} color="#64748B" />
-              <TextInput
-                className="flex-1 ml-3 text-white text-base font-poppins"
-                placeholder="Search bikes..."
-                placeholderTextColor="#64748B"
-                value={searchQuery}
-                onChangeText={setSearchQuery}
-              />
-            </View>
-          )}
-        </Animated.View>
-
+        )}
+      </Animated.View>
+      <ScrollView className="flex-1" showsVerticalScrollIndicator={false}>
         {/* Featured Bike Card */}
         <View className="pt-[30px] px-4 pb-4 ">
           <BikePreview bike={featuredBike} />
