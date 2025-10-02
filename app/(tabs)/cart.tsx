@@ -1,7 +1,7 @@
-import CartItem from '@/components/cart-item';
-import CheckoutButton from '@/components/checkout-button';
-import CodeInput from '@/components/code-input';
-import OrderSummary from '@/components/order-summary';
+import CartItem from '@/components/cart/cart-item';
+import CheckoutButton from '@/components/cart/checkout-button';
+import CodeInput from '@/components/cart/code-input';
+import OrderSummary from '@/components/cart/order-summary';
 import PageHeader from '@/components/page-header';
 import { useCart } from '@/context/cart-context';
 import React from 'react';

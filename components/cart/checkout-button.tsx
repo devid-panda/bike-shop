@@ -3,14 +3,14 @@ import React, { useState } from 'react';
 import { Text, View } from 'react-native';
 import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, {
-  interpolate,
-  runOnJS,
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-  withTiming
+    interpolate,
+    runOnJS,
+    useAnimatedStyle,
+    useSharedValue,
+    withSpring,
+    withTiming
 } from 'react-native-reanimated';
-import Button from './ui/button';
+import Button from '../ui/button';
 
 export default function CheckoutButton() {
   const [isCompleted, setIsCompleted] = useState(false);
