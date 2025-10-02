@@ -23,7 +23,7 @@ export default function ProfileScreen() {
           entering={FadeInUp.delay(100)}
           className="px-6 py-4"
         >
-          <Text className="text-white text-2xl font-bold mb-6">Profile</Text>
+          <Text className="text-white text-2xl font-bold mb-6 font-poppins-bold">Profile</Text>
           
           {/* User Info */}
           <View className="bg-dark-800 rounded-2xl p-6 flex-row items-center mb-6">
@@ -32,9 +32,9 @@ export default function ProfileScreen() {
             </View>
             
             <View className="flex-1">
-              <Text className="text-white text-lg font-semibold">John Doe</Text>
-              <Text className="text-dark-400">john.doe@example.com</Text>
-              <Text className="text-primary-400 text-sm mt-1">Premium Member</Text>
+              <Text className="text-white text-lg font-semibold font-poppins-semibold">John Doe</Text>
+              <Text className="text-dark-400 font-poppins-medium">john.doe@example.com</Text>
+              <Text className="text-primary-400 text-sm mt-1 font-poppins-medium">Premium Member</Text>
             </View>
             
             <TouchableOpacity className="w-10 h-10 bg-dark-700 rounded-xl items-center justify-center">
@@ -57,8 +57,8 @@ export default function ProfileScreen() {
                 </View>
                 
                 <View className="flex-1">
-                  <Text className="text-white font-semibold mb-1">{item.title}</Text>
-                  <Text className="text-dark-400 text-sm">{item.subtitle}</Text>
+                  <Text className="text-white font-semibold mb-1 font-poppins-semibold">{item.title}</Text>
+                  <Text className="text-dark-400 text-sm font-poppins">{item.subtitle}</Text>
                 </View>
                 
                 <IconSymbol name="chevron.right" size={16} color="#64748B" />
@@ -73,7 +73,7 @@ export default function ProfileScreen() {
           className="px-6 py-6 mb-12"
         >
           <TouchableOpacity className="bg-red-500/20 border border-red-500 rounded-2xl py-4 items-center">
-            <Text className="text-red-400 font-semibold">Sign Out</Text>
+            <Text className="text-red-400 font-semibold font-poppins-semibold">Sign Out</Text>
           </TouchableOpacity>
         </Animated.View>
       </ScrollView>

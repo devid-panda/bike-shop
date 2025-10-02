@@ -38,7 +38,10 @@ module.exports = {
         }
       },
       fontFamily: {
-        'poppins': ['Poppins', 'system-ui', 'sans-serif'],
+        'poppins': ['Poppins-Regular', 'Poppins', 'system-ui', 'sans-serif'],
+        'poppins-medium': ['Poppins-Medium', 'Poppins', 'system-ui', 'sans-serif'],
+        'poppins-semibold': ['Poppins-SemiBold', 'Poppins', 'system-ui', 'sans-serif'],
+        'poppins-bold': ['Poppins-Bold', 'Poppins', 'system-ui', 'sans-serif'],
       },
       fontSize: {
         xs: 12,

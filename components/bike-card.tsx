@@ -60,11 +60,11 @@ export function BikeCard({ bike, index, isLarge = false, isDark = false }: BikeC
                 contentFit="cover"
               />
             </View>
-            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins tracking-[-0.3px] mt-8 mb-1">{bike.brand}</Text>
-            <Text className="text-white font-poppins font-bold text-[15px] leading-[100%] tracking-[-0.3px] mb-1" numberOfLines={1}>
+            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins-medium tracking-[-0.3px] mt-8 mb-1">{bike.brand}</Text>
+            <Text className="text-white font-poppins-bold text-[15px] leading-[100%] tracking-[-0.3px] mb-1" numberOfLines={1}>
               {bike.name}
             </Text>
-            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins leading-[100%]">
+            <Text className="text-white opacity-[0.6] text-[13px] font-medium leading-[100%] font-poppins-medium leading-[100%]">
               $ {bike.price.toLocaleString()}
             </Text>
             <TouchableOpacity className="absolute right-0 top-0 w-6 h-6 items-center justify-center" onPress={() => setIsFavorite(!isFavorite)}>

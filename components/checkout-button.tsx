@@ -100,7 +100,7 @@ export default function CheckoutButton() {
             className="absolute inset-0 justify-center items-center"
           >
             <Text 
-              className="text-[#ffffff] text-[15px] font-medium font-poppins text-center bg-transparent"
+              className="text-[#ffffff] text-[15px] font-medium font-poppins-medium text-center bg-transparent"
               style={{ paddingLeft: 44 }}
             >
               Checkout
@@ -113,7 +113,7 @@ export default function CheckoutButton() {
             className="absolute left-0 top-0 bottom-0 justify-center items-start"
           >
             <Text 
-              className="text-[#ffffff] text-[15px] font-medium font-poppins bg-transparent"
+              className="text-[#ffffff] text-[15px] font-medium font-poppins-medium bg-transparent"
             >
               Done!
             </Text>

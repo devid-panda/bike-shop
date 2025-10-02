@@ -16,7 +16,7 @@ export default function CategoryButton({ active, title, onPress }: CategoryButto
         style={{ flex: 1, height: 44 }} // 48 = h-12
         maskElement={
           <Text
-            className="text-white font-poppins font-bold text-[15px] leading-[100%] tracking-[0.35px]"
+            className="text-white font-poppins-bold font-bold text-[15px] leading-[100%] tracking-[0.35px]"
             style={{
               flex: 1,
               textAlign: 'center',

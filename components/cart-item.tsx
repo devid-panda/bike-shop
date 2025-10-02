@@ -42,7 +42,7 @@ export default function CartItem({ item, index }: CartItemProps) {
     >
       <CartItemImage item={item} />
       <View className="flex-1 justify-between py-1.5">
-        <Text className="text-[#ffffffde] font-bold text-[15px] leading-[100%] tracking-[-0.3px] font-poppins flex-1" numberOfLines={1}>
+        <Text className="text-[#ffffffde] font-bold text-[15px] leading-[100%] tracking-[-0.3px] font-poppins-bold flex-1" numberOfLines={1}>
           {item.bike.name}
         </Text>
         <View className="justify-between flex-row items-center">
@@ -51,7 +51,7 @@ export default function CartItem({ item, index }: CartItemProps) {
           </Text>
           <View className="flex-row items-center gap-0">
             <CartMinusButton onPress={decreaseQuantity} />
-            <Text className="w-6 text-center items-center justify-center items-center text-[#ffffff99] font-semibold text-[13px] leading-[100%] tracking-[-0.3px] font-poppins">{item.quantity}</Text>
+            <Text className="w-6 text-center items-center justify-center items-center text-[#ffffff99] font-semibold text-[13px] leading-[100%] tracking-[-0.3px] font-poppins-semibold">{item.quantity}</Text>
             <CartPlusButton onPress={increaseQuantity} />
           </View>
         </View>

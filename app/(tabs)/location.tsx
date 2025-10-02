@@ -12,7 +12,7 @@ export default function LocationScreen() {
           entering={FadeInUp.delay(100)}
           className="px-6 py-4"
         >
-          <Text className="text-white text-2xl font-bold mb-6">Location</Text>
+          <Text className="text-white text-2xl font-bold mb-6 font-poppins-bold">Location</Text>
         </Animated.View>
       </ScrollView>
     </SafeAreaView>

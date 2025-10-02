@@ -40,7 +40,7 @@ export default function HomeScreen() {
           className="px-5 py-4"
         >
           <View className="flex-row items-center justify-between">
-            <Text className="text-white text-xl font-bold font-poppins">Choose Your Bike</Text>
+            <Text className="text-white text-xl font-bold font-poppins-bold">Choose Your Bike</Text>
             <Button className="w-11 !px-0" onPress={() => setIsSearchVisible(!isSearchVisible)}>
               <IconSymbol name="magnifyingglass" size={20} color="white" />
             </Button>
@@ -51,7 +51,7 @@ export default function HomeScreen() {
             <View className="bg-dark-800 rounded-2xl px-4 py-3 flex-row items-center mt-6">
               <IconSymbol name="magnifyingglass" size={20} color="#64748B" />
               <TextInput
-                className="flex-1 ml-3 text-white text-base"
+                className="flex-1 ml-3 text-white text-base font-poppins"
                 placeholder="Search bikes..."
                 placeholderTextColor="#64748B"
                 value={searchQuery}
@@ -80,7 +80,7 @@ export default function HomeScreen() {
                 active={selectedCategory === category}
               >
                 {category === 'All' && (
-                  <Text className={`text-sm font-medium ${
+                  <Text className={`text-sm font-medium font-poppins-medium ${
                     selectedCategory === category ? 'text-white' : 'text-[#ffffff99]'
                   }`}>
                     {category}

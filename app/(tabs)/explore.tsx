@@ -12,7 +12,7 @@ export default function ExploreScreen() {
           entering={FadeInUp.delay(100)}
           className="px-6 py-4"
         >
-          <Text className="text-white text-2xl font-bold mb-2">Files</Text>
+          <Text className="text-white text-2xl font-bold mb-2 font-poppins-bold">Files</Text>
         </Animated.View>
       </ScrollView>
     </SafeAreaView>

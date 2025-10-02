@@ -19,27 +19,27 @@ export default function OrderSummary() {
     >
       <View className="">
         <View className="flex-row justify-between mb-2">
-          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Subtotal:</Text>
+          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins-medium">Subtotal:</Text>
           <Text className="text-[#ffffff99] font-normal text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">${subtotal.toFixed(2)}</Text>
         </View>
         
         <View className="flex-row justify-between mb-2">
-          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Delivery Fee:</Text>
+          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins-medium">Delivery Fee:</Text>
           <Text className="text-[#ffffff99] font-normal text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">
             {`$${deliveryFee}`}
           </Text>
         </View>
         
         <View className="flex-row justify-between mb-4">
-          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Discount:</Text>
+          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins-medium">Discount:</Text>
           <Text className="text-[#ffffff99] font-normal text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">
             {((discount / subtotal) * 100).toFixed(0)}%
           </Text>
         </View>
         
         <View className="flex-row justify-between">
-          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Total:</Text>
-          <Text className="text-[#38B8EA] text-[17px] font-bold leading-[100%] tracking-[-0.3px] font-poppins">
+          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins-medium">Total:</Text>
+          <Text className="text-[#38B8EA] text-[17px] font-bold leading-[100%] tracking-[-0.3px] font-poppins-bold">
             ${total.toLocaleString()}
           </Text>
         </View>

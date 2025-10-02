@@ -21,7 +21,7 @@ export default function ProductDetailScreen() {
   if (!bike) {
     return (
       <SafeAreaView className="flex-1 bg-dark-900 items-center justify-center">
-        <Text className="text-white text-lg">Bike not found</Text>
+        <Text className="text-white text-lg font-poppins-bold font-bold">Bike not found</Text>
       </SafeAreaView>
     );
   }

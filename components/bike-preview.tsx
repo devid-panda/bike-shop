@@ -115,7 +115,7 @@ export function BikePreview({ bike }: BikePreviewProps) {
           />
         </View>
         <View className="absolute bottom-6 left-4">
-          <Text className="text-white text-[26px] font-bold opacity-[.6]">
+          <Text className="text-white text-[26px] font-bold opacity-[.6] font-poppins-bold">
             {bike.discount}% Off
           </Text>
         </View>

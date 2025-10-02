@@ -20,7 +20,7 @@ export default function PageHeader({ title }: PageHeaderProps) {
         <IconSymbol name="chevron.left" size={20} color="white" />
       </Button>
       
-      <Text className="text-white text-xl font-bold font-poppins leading-[100%] tracking-[-0.3px]">{title}</Text>
+      <Text className="text-white text-xl font-bold font-poppins-bold leading-[100%] tracking-[-0.3px]">{title}</Text>
       
       <TouchableOpacity className="w-10 h-10 rounded-xl items-center justify-center">
       </TouchableOpacity>

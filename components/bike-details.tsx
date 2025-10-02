@@ -106,17 +106,17 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
         <View className="px-5 pb-6 pt-6">
           {activeTab === 'description' ? (
             <Animated.View entering={FadeInDown.delay(100)}>
-              <Text className="text-white text-[17px] font-bold font-poppins leading-[100%] tracking-[-0.3px] mb-2">
+              <Text className="text-white text-[17px] font-bold font-poppins-bold leading-[100%] tracking-[-0.3px] mb-2">
                 {bike.name}
               </Text>
-              <Text className="text-[#ffffff99] text-[15px] leading-[100%] mb-4">
+              <Text className="text-[#ffffff99] text-[15px] leading-[100%] mb-4 font-poppins">
                 {bike.description}
               </Text>
-              <Text className="text-white text-[17px] font-bold font-poppins leading-[100%] tracking-[-0.3px] mb-2">Features:</Text>
+              <Text className="text-white text-[17px] font-bold font-poppins-bold leading-[100%] tracking-[-0.3px] mb-2">Features:</Text>
               {bike.features.map((feature, index) => (
                 <View key={index} className="flex-row items-center mb-2">
                   <View className="w-1 h-1 bg-primary-500 rounded-full mr-3" />
-                  <Text className="text-[#ffffff99] flex-1">{feature}</Text>
+                  <Text className="text-[#ffffff99] flex-1 font-poppins">{feature}</Text>
                 </View>
               ))}
             </Animated.View>
@@ -127,16 +127,16 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
                   <View key={key} className={`flex-row justify-between py-3 ${
                     index < Object.entries(bike.specifications).length - 1 ? 'border-b border-dark-700' : ''
                   }`}>
-                    <Text className="text-[#ffffff99] text-[15px] leading-[100%] capitalize font-poppins">{key}:</Text>
-                    <Text className="text-white text-[15px] leading-[100%] font-medium font-poppins">{value}</Text>
+                    <Text className="text-[#ffffff99] text-[15px] leading-[100%] capitalize font-poppins-medium">{key}:</Text>
+                    <Text className="text-white text-[15px] leading-[100%] font-medium font-poppins-medium">{value}</Text>
                   </View>
                 ))}
               </View>
               
               {/* FREE DATA Section - Weather API */}
               <View className="mt-6 bg-gradient-to-r from-blue-600 to-blue-700 rounded-2xl p-4">
-                <Text className="text-white text-[17px] font-bold font-poppins leading-[100%] tracking-[-0.3px] mb-2">FREE DATA</Text>
-                <Text className="text-[#ffffff99] text-[15px] leading-[100%] mb-2">
+                <Text className="text-white text-[17px] font-bold font-poppins-bold leading-[100%] tracking-[-0.3px] mb-2">FREE DATA</Text>
+                <Text className="text-[#ffffff99] text-[15px] leading-[100%] mb-2 font-poppins-medium">
                   Perfect cycling weather today! Check the weather conditions for your next ride.
                 </Text>
                 <WeatherWidget />
@@ -173,7 +173,7 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
           onPress={handleAddToCart}
           disabled={isInCart}
         >
-          <Text className="text-white text-[15px] font-medium font-poppins leading-[100%] tracking-[-0.3px]">
+          <Text className="text-white text-[15px] font-medium font-poppins-medium leading-[100%] tracking-[-0.3px]">
             {isInCart ? 'Added to Cart' : 'Add to Cart'}
           </Text>
         </Button>
@@ -219,7 +219,7 @@ function WeatherWidget() {
   if (!weather) {
     return (
       <View className="mt-3 p-3 bg-blue-500/20 rounded-xl">
-        <Text className="text-white text-[15px] leading-[100%] font-poppins">Loading weather...</Text>
+        <Text className="text-white text-[15px] leading-[100%] font-poppins-medium">Loading weather...</Text>
       </View>
     );
   }
@@ -228,12 +228,12 @@ function WeatherWidget() {
     <View className="mt-3 p-3 bg-blue-500/20 rounded-xl">
       <View className="flex-row items-center justify-between">
         <View>
-          <Text className="text-white text-[17px] leading-[100%] font-semibold font-poppins mb-1">{weather.main.temp}°C</Text>
-          <Text className="text-white text-[15px] leading-[100%] font-poppins capitalize">{weather.weather[0].description}</Text>
+          <Text className="text-white text-[17px] leading-[100%] font-semibold font-poppins-semibold mb-1">{weather.main.temp}°C</Text>
+          <Text className="text-white text-[15px] leading-[100%] font-poppins-medium capitalize">{weather.weather[0].description}</Text>
         </View>
         <View className="items-end">
-          <Text className="text-[#ffffff99] text-[15px] leading-[100%] font-poppins mb-1">Wind: {weather.wind.speed} m/s</Text>
-          <Text className="text-[#ffffff99] text-[15px] leading-[100%] font-poppins">Humidity: {weather.main.humidity}%</Text>
+          <Text className="text-[#ffffff99] text-[15px] leading-[100%] font-poppins-medium mb-1">Wind: {weather.wind.speed} m/s</Text>
+          <Text className="text-[#ffffff99] text-[15px] leading-[100%] font-poppins-medium">Humidity: {weather.main.humidity}%</Text>
         </View>
       </View>
     </View>

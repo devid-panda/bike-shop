@@ -26,12 +26,12 @@ export default function CodeInput() {
           <TextInput
             placeholder="Enter code"
             placeholderTextColor="#ffffff99"
-            className="text-white bg-transparent"
+            className="text-white bg-transparent font-poppins text-normal"
             style={{ paddingVertical: 0, paddingHorizontal: 0 }}
           />
         </View>
         <Button className="w-[114px] h-[48px]">
-          <Text className="text-white font-semibold">Apply</Text>
+          <Text className="text-white font-bold font-poppins-bold">Apply</Text>
         </Button>
       </View>
     </Animated.View>
