@@ -1,35 +1,6 @@
 # Bike Shop - React Native App
 
-A modern, responsive React Native mobile app for a bike shop built with Expo, TypeScript, and Tailwind CSS. This app features a pixel-perfect UI matching the provided Figma design with smooth animations and responsive design.
-
-## 🚀 Features
-
-### Core Features
-- **Pixel-Perfect UI**: Matches the Figma design exactly with proper typography, spacing, and colors
-- **Responsive Design**: Adapts to different screen sizes and form factors
-- **Smooth Animations**: Implemented using React Native Reanimated for fluid user experience
-- **Shopping Cart**: Full cart functionality with add/remove items and quantity management
-- **Product Details**: Detailed product pages with tabs and specifications
-- **Search & Filter**: Search bikes by name/brand and filter by categories
-
-### Technical Features
-- **Expo React Native 54**: Latest Expo SDK with new architecture enabled
-- **TypeScript**: Full type safety throughout the application
-- **Tailwind CSS**: Utility-first CSS framework via NativeWind
-- **React Native Reanimated**: Advanced animations and gestures
-- **Context API**: State management for cart functionality
-- **Responsive Hooks**: Custom hooks for handling different screen sizes
-
-### Animations (MOTION Section Implementation)
-- **Right to Left Swipe**: Smooth transitions between screens
-- **Button Press Effects**: Accent colored buttons shrink on press with smooth transitions
-- **Skeuomorphic Transitions**: Smooth transitions between Description/Specification tabs
-- **Checkout Flow**: Slide animations from left to right during checkout process
-
-### API Integration (FREE DATA Section)
-- **Weather Widget**: Integrated weather API in the product specification tab
-- **Clean Display**: Weather information displayed in a visually appealing card format
-- **Fallback Data**: Mock data provided for demo purposes
+A modern, responsive React Native mobile app for a bike shop built with Expo, TypeScript, and Tailwind CSS. This app features a pixel-perfect UI with smooth animations, gesture-based interactions, and a complete e-commerce experience.
 
 ## 📱 Screens
 
@@ -41,25 +12,17 @@ A modern, responsive React Native mobile app for a bike shop built with Expo, Ty
 
 2. **Product Detail** (`app/product/[id].tsx`)
    - Large product image with gradient background
-   - Animated tabs (Description/Specification)
+   - Animated tabs with smooth left/right slide transitions
    - Weather widget in FREE DATA section
-   - Add to cart functionality
+   - Interactive Add to Cart button with shrink animation
+   - Dynamic button states (Add to Cart → Added to Cart)
 
 3. **Shopping Cart** (`app/(tabs)/cart.tsx`)
    - Cart items with quantity controls
    - Order summary with discounts
    - Promo code application
-   - Animated checkout button
-
-4. **Categories** (`app/(tabs)/explore.tsx`)
-   - Category grid with icons
-   - Popular brands section
-   - Responsive layout
-
-5. **Profile** (`app/(tabs)/profile.tsx`)
-   - User information
-   - Menu items with navigation
-   - Settings and preferences
+   - Swipeable checkout button with gesture interaction
+   - Tab bar hidden for immersive experience
 
 ## 🛠 Tech Stack
 
@@ -67,10 +30,13 @@ A modern, responsive React Native mobile app for a bike shop built with Expo, Ty
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS (NativeWind)
 - **Animations**: React Native Reanimated 4
+- **Gestures**: React Native Gesture Handler
 - **Navigation**: Expo Router
 - **State Management**: React Context API
 - **Image Handling**: Expo Image
+- **Fonts**: Poppins (Regular, Medium, SemiBold, Bold)
 - **Icons**: SF Symbols (iOS) / Material Icons (Android)
+- **Shadows**: React Native Neomorph Shadows
 
 ## 📦 Installation
 
@@ -97,9 +63,6 @@ A modern, responsive React Native mobile app for a bike shop built with Expo, Ty
    
    # Android
    npm run android
-   
-   # Web
-   npm run web
    ```
 
 ## 📁 Project Structure
@@ -109,45 +72,39 @@ bike-shop/
 ├── app/                    # App screens and navigation
 │   ├── (tabs)/            # Tab-based screens
 │   │   ├── index.tsx      # Home screen
-│   │   ├── cart.tsx       # Shopping cart
-│   │   ├── explore.tsx    # Categories
-│   │   └── profile.tsx    # User profile
+│   │   └── cart.tsx    # Shopping cart
 │   ├── product/           # Product detail screens
 │   │   └── [id].tsx       # Dynamic product page
-│   └── _layout.tsx        # Root layout
+│   └── _layout.tsx        # Root layout with gesture support
 ├── components/            # Reusable components
 │   ├── ui/               # UI components
-│   ├── bike-card.tsx     # Product card component
+│   │   ├── button.tsx    # Custom button with press effects
+│   │   └── category-button.tsx # Tab button component
+│   ├── bike/             # Bike-related components
+│   │   ├── bike-card.tsx # Product card component
+│   │   ├── bike-details.tsx # Product detail with animations
+│   │   └── bike-preview.tsx # Product preview
+│   ├── cart/             # Cart-related components
+│   │   ├── checkout-button.tsx # Swipeable checkout button
+│   │   ├── cart-item.tsx # Individual cart item
+│   │   └── order-summary.tsx # Order summary component
 │   └── cart-tab-icon.tsx # Cart icon with badge
 ├── context/              # React Context providers
-│   └── cart-context.tsx  # Shopping cart state
+│   └── cart-context.tsx  # Shopping cart state management
 ├── data/                 # Static data
-│   └── bikes.ts          # Bike product data
+│   ├── bikes.ts          # Bike product data
+│   └── images.tsx        # Image assets
 ├── hooks/                # Custom hooks
-│   └── use-responsive.ts # Responsive design hook
+│   ├── use-responsive.ts # Responsive design hook
+│   └── use-color-scheme.ts # Theme color management
 ├── types/                # TypeScript type definitions
 │   └── bike.ts           # Bike and cart types
-└── constants/            # App constants
-    └── theme.ts          # Theme configuration
+├── constants/            # App constants
+│   ├── theme.ts          # Theme configuration
+│   └── fonts.ts          # Font loading configuration
+└── assets/               # Static assets
+    └── fonts/            # Poppins font files
 ```
-
-## 🎨 Design System
-
-### Colors
-- **Primary**: Blue (#0091F5)
-- **Dark Theme**: Various shades of dark gray/blue
-- **Accent**: Red for discounts, Green for success states
-- **Text**: White primary, gray secondary
-
-### Typography
-- **Font Family**: SF Pro Display (iOS native)
-- **Sizes**: Responsive text sizing based on screen size
-- **Weights**: Regular, Medium, Semibold, Bold
-
-### Spacing
-- **Consistent**: 4px base unit system
-- **Responsive**: Adapts to screen size
-- **Padding/Margin**: Standardized spacing scale
 
 ## 🔧 Configuration
 
@@ -174,44 +131,37 @@ The app is fully responsive and adapts to:
 - Flexible image sizing
 - Responsive navigation
 
-## 🎭 Animations
+## 🎭 Animations & Interactions
 
-All animations are implemented using React Native Reanimated for optimal performance:
+All animations are implemented using React Native Reanimated and Gesture Handler for optimal performance:
 
-1. **Entrance Animations**: FadeInUp, FadeInDown with staggered delays
-2. **Interaction Animations**: Button press effects, tab transitions
-3. **Navigation Animations**: Smooth screen transitions
-4. **Cart Animations**: Add to cart button scaling effects
+### Button Interactions
+1. **Press Effects**: Shrink animation (0.8125x scale) on button press
+2. **No Darkening**: Custom `activeOpacity` prevents default TouchableOpacity darkening
+3. **Spring Physics**: Natural, bouncy animations using `withSpring`
 
-## 🌐 API Integration
+### Tab Transitions
+1. **Slide Animations**: Smooth left/right slide transitions between Description/Specification tabs
+2. **Direction Detection**: Intelligent slide direction based on tab selection
+3. **Timing Control**: 300ms duration with 150ms delay for smooth transitions
 
-The app includes a weather widget as the FREE DATA section:
-- Displays current weather conditions
-- Shows temperature, humidity, and wind speed
-- Integrated into the product specification tab
-- Fallback to mock data for demo purposes
+### Gesture Interactions
+1. **Swipeable Checkout**: Left-to-right swipe gesture for checkout completion
+2. **Progress Tracking**: Visual feedback during swipe with opacity animations
+3. **State Management**: Dynamic text changes (Checkout → Done!) with smooth transitions
+
+### Cart State Management
+1. **Dynamic Buttons**: Add to Cart → Added to Cart state changes
+2. **Disabled States**: Proper handling of already-added items
+3. **Visual Feedback**: Clear indication of cart status
 
 ## 🚀 Performance Optimizations
 
 - **Image Optimization**: Using Expo Image for better performance
 - **Lazy Loading**: Components load as needed
-- **Efficient Animations**: Hardware-accelerated animations
+- **Efficient Animations**: Hardware-accelerated animations with React Native Reanimated
+- **Gesture Performance**: Optimized gesture handling with React Native Gesture Handler
 - **Optimized Renders**: Proper React optimization patterns
-- **Memory Management**: Efficient state management
-
-## 📄 License
-
-This project is created for demonstration purposes based on the provided Figma design.
-
-## 🤝 Contributing
-
-This is a demonstration project. For production use, consider:
-- Adding proper error handling
-- Implementing real API endpoints
-- Adding user authentication
-- Including comprehensive testing
-- Setting up CI/CD pipelines
-
----
-
-Built with ❤️ using React Native and Expo
+- **Memory Management**: Efficient state management with Context API
+- **Font Loading**: Custom font loading with proper fallbacks
+- **Shadow Performance**: Optimized shadow rendering with react-native-neomorph-shadows
