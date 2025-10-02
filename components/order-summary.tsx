@@ -15,11 +15,11 @@ export default function OrderSummary() {
   return (
     <Animated.View 
       entering={SlideInRight.delay(500)}
-      className="px-6 py-4"
+      className="px-6 py-4 mb-1"
     >
       <View className="">
-      <View className="flex-row justify-between mb-2">
-        <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Subtotal:</Text>
+        <View className="flex-row justify-between mb-2">
+          <Text className="text-[#ffffffde] font-medium text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">Subtotal:</Text>
           <Text className="text-[#ffffff99] font-normal text-[15px] leading-[100%] tracking-[-0.3px] font-poppins">${subtotal.toFixed(2)}</Text>
         </View>
         
