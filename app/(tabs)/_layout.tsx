@@ -75,14 +75,14 @@ export default function TabLayout() {
         name="location"
         options={{
           title: '',
-          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'map.fill', 20),
+          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'map.fill', 24),
         }}
       />
       <Tabs.Screen
         name="cart"
         options={{
           title: '',
-          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'cart.fill', 20),
+          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'cart.fill', 24),
           tabBarStyle: { display: 'none' },
         }}
       />
@@ -90,7 +90,7 @@ export default function TabLayout() {
         name="profile"
         options={{
           title: '',
-          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'person.fill', 16),
+          tabBarIcon: ({ color, focused }) => renderTabBarIcon(color, focused, 'person.fill', 20),
         }}
       />
       <Tabs.Screen
