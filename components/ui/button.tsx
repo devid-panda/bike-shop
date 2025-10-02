@@ -9,6 +9,7 @@ interface ButtonProps extends TouchableOpacityProps {
   size?: 'sm' | 'md' | 'lg';
   className?: string;
   textClassName?: string;
+  activeOpacity?: number;
   slanted?: boolean;
 }
 
@@ -20,6 +21,7 @@ export function Button({
   textClassName,
   disabled,
   slanted = false,
+  activeOpacity = 0.2,
   ...props
 }: ButtonProps) {
   const baseStyles = 'rounded-xl items-center justify-center border-2 border-transparent overflow-hidden';
@@ -46,6 +48,7 @@ export function Button({
         className
       )}
       disabled={disabled}
+      activeOpacity={activeOpacity}
       {...props}
     >
       {children}
@@ -64,6 +67,7 @@ export function Button({
           slanted && '-skew-y-6'
         )}
         disabled={disabled}
+        activeOpacity={activeOpacity}
         {...props}
       >
         <LinearGradient

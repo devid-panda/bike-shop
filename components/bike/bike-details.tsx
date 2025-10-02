@@ -63,12 +63,18 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
   const handleAddToCart = () => {
     if (!bike || isInCart) return;
     
-    addToCartScale.value = withSpring(0.95, {}, () => {
-      addToCartScale.value = withSpring(1);
-    });
-    
     addToCart(bike);
     Alert.alert('Added to Cart', `${bike.name} has been added to your cart!`);
+  };
+
+  const handlePressIn = () => {
+    if (!bike || isInCart) return;
+    addToCartScale.value = withSpring(0.8125);
+  };
+
+  const handlePressOut = () => {
+    if (!bike || isInCart) return;
+    addToCartScale.value = withSpring(1);
   };
 
   const contentAnimatedStyle = useAnimatedStyle(() => {
@@ -166,10 +172,7 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
       </ScrollView>
 
       {/* Add to Cart Button */}
-      <Animated.View 
-        style={[addToCartAnimatedStyle]}
-        className="px-9 rounded-[50px] h-[104px] items-center justify-between bg-[#262E3D] relative flex-row"
-      >
+      <View className="px-9 rounded-[50px] h-[104px] items-center justify-between bg-[#262E3D] relative flex-row">
         <LinearGradient
           colors={['rgba(255, 255, 255, 0.2)', 'rgba(0, 0, 0, 0.2)']}
           start={{ x: 0, y: 0 }}
@@ -187,16 +190,21 @@ export default function BikeDetails({ bike }: BikeDetailsProps) {
         <Text className="text-[#3D9CEA] text-2xl font-poppins font-normal leading-[100%] tracking-[-0.3px]">
           $ {bike.price.toLocaleString()}
         </Text>
-        <Button 
-          className={`w-[160px] h-[48px] ${isInCart ? 'opacity-50' : ''}`} 
-          onPress={handleAddToCart}
-          disabled={isInCart}
-        >
-          <Text className="text-white text-[15px] font-medium font-poppins-medium leading-[100%] tracking-[-0.3px]">
-            {isInCart ? 'Added to Cart' : 'Add to Cart'}
-          </Text>
-        </Button>
-      </Animated.View>
+        <Animated.View style={[addToCartAnimatedStyle]}>
+          <Button 
+            activeOpacity={1}
+            className={`w-[160px] h-[48px] ${isInCart ? 'opacity-50' : ''}`} 
+            onPress={handleAddToCart}
+            onPressIn={handlePressIn}
+            onPressOut={handlePressOut}
+            disabled={isInCart}
+          >
+            <Text className="text-white text-[15px] font-medium font-poppins-medium leading-[100%] tracking-[-0.3px]">
+              {isInCart ? 'Added to Cart' : 'Add to Cart'}
+            </Text>
+          </Button>
+        </Animated.View>
+      </View>
     </View>
   );
 }
